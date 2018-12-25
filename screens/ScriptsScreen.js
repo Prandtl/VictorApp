@@ -24,7 +24,14 @@ export class ScriptsScreen extends React.Component {
       this.setState(state => {
         isSending: true;
       });
-      let res = await fetch(`http://${ip}:31337/scripts`, {
+      let endpoint = `http://${ip}:31337`
+      if (script.name === "Включить") {
+        endpoint = `${endpoint}/turnon`
+      } else {
+        endpoint = `${endpoint}/scripts`
+      }
+      console.log(endpoint)
+      let res = await fetch(endpoint, {
         method: "POST",
         headers: {
           Accept: "application/json",
@@ -42,23 +49,21 @@ export class ScriptsScreen extends React.Component {
     let scripts = [];
     for (let script of Scripts.scripts) {
       scripts.push(
+        <View style={{flex: 1, marginTop: 8, width: 250, justifyContent: "center", alignItems: "center"}} key={script.name}>
         <Button
           key={`SelectScripts${Scripts.scripts.indexOf(script)}`}
           title={`${script.name}`}
           onPress={async () => await this.sendScript(script)}
         />
+        </View>
       );
     }
     return (
       <SafeAreaView
         style={{ flex: 1, marginTop: Platform.OS === "android" ? 20 : 0 }}
       >
-        <ScrollView style={{ flex: 1 }}>
-          <View
-            style={{ flex: 1, justifyContent: "center", alignItems: "center" }}
-          >
-            {scripts}
-          </View>
+        <ScrollView contentContainerStyle={{alignItems: "center"}}>
+          {scripts}
         </ScrollView>
       </SafeAreaView>
     );

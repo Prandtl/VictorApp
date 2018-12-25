@@ -34,9 +34,9 @@ export class HomeScreen extends React.Component {
       type: "face",
       name: Command.name,
       payload: {
-        x: Command.x,
-        y: Command.y,
-        e: Command.e
+        x: `${Command.x}`,
+        y: `${Command.y}`,
+        e: `${Command.e}`
       }
     });
   }
@@ -49,8 +49,8 @@ export class HomeScreen extends React.Component {
       payload: {
         msg: Command.msg,
         voice: Command.voice,
-        emotion: Command.emotion,
-        speed: Command.speed
+        emotion: `${Command.emotion}`,
+        speed: `${Command.speed}`
       }
     });
   }

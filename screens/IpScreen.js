@@ -18,7 +18,7 @@ export class IpScreen extends React.Component {
         <Text>Set Ip address</Text>
         <TextInput
           style={{ height: 40, borderColor: "gray", borderWidth: 1 }}
-          onChangeText={text => this.props.Main.ipOnChange({ text })}
+          onChangeText={text => this.props.Main.ipOnChange(text)}
           value={this.props.Main.ip}
         />
       </SafeAreaView>

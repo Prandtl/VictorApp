@@ -1,9 +1,10 @@
 import { observable, action } from "mobx";
+import { eyelidsUp, eyelidsDown, turnOn, turnOff, sayHello, eyesAndEyelids, emoAndColor, sayApp, female, please, lookUp, lookDown } from "../models/actions";
 export class MainStore {
   @observable
-  ip = "127.0.0.1";
+  ip = "192.168.43.240";
   @observable
-  commands = [];
+  commands = [eyelidsUp, eyelidsDown, lookUp, lookDown, turnOn, turnOff, sayHello, eyesAndEyelids, emoAndColor, sayApp, female, please];
   @action
   ipOnChange(ip) {
     this.ip = ip;
